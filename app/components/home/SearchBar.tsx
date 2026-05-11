@@ -1,104 +1,78 @@
 import React from "react";
-import {
-  View,
-  TextInput,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-} from "react-native";
-import { Ionicons, Feather } from "@expo/vector-icons";
+import { View, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { Feather, Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { useCartStore } from "../../store/cartStore";
 
-interface Props {
-  onPress?: () => void;
-  cartCount?: number;
+type Props = {
+  cartCount?:  number; // ignoré — on lit le store
   notifCount?: number;
+};
+
+export function SearchBar({ notifCount = 0 }: Props) {
+  const router     = useRouter();
+  const totalItems = useCartStore((s) => s.totalItems());
+
+  return (
+    <View style={styles.row}>
+      {/* Champ recherche */}
+      <View style={styles.inputWrap}>
+        <Feather name="search" size={16} color="#aaa" />
+        <TextInput
+          placeholder="Rechercher un produit…"
+          placeholderTextColor="#aaa"
+          style={styles.input}
+        />
+      </View>
+
+      {/* Icône notifs */}
+      <TouchableOpacity style={styles.iconBtn} activeOpacity={0.75}>
+        <Ionicons name="notifications-outline" size={20} color="#555" />
+        {notifCount > 0 && (
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>{notifCount}</Text>
+          </View>
+        )}
+      </TouchableOpacity>
+
+      {/* Icône panier — badge depuis le store */}
+      <TouchableOpacity
+        style={styles.iconBtn}
+        onPress={() => totalItems > 0 && router.push("/(single)/confirm")}
+        activeOpacity={0.75}
+      >
+        <Ionicons name="bag-outline" size={20} color="#555" />
+        {totalItems > 0 && (
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>{totalItems}</Text>
+          </View>
+        )}
+      </TouchableOpacity>
+    </View>
+  );
 }
 
-export const SearchBar: React.FC<Props> = ({
-  onPress,
-  cartCount = 0,
-  notifCount = 0,
-}) => (
-  <View style={styles.container}>
-    <View style={styles.searchBox} >
-      <Feather name="search" size={18} color="#333" />
-      <TextInput style={styles.placeholder}
-        placeholder="Que voulez vous acheter ?"
-      />
-      <Feather name="camera" size={18} color="#333" style={{ marginLeft: "auto" }} />
-    </View>
-
-    <View style={styles.actions}>
-      <TouchableOpacity style={styles.iconBtn}>
-        <Ionicons name="chatbubble-outline" size={20} color="#333" />
-        {notifCount > 0 && <Badge count={notifCount} color="#EF4444" />}
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.iconBtn}>
-        <Feather name="shopping-cart" size={20} color="#333" />
-        {cartCount > 0 && <Badge count={cartCount} color="#EF4444" />}
-      </TouchableOpacity>
-    </View>
-  </View>
-);
-
-const Badge: React.FC<{ count: number; color: string }> = ({ count, color }) => (
-  <View style={[styles.badge, { backgroundColor: color }]}>
-    <Text style={styles.badgeText}>{count > 99 ? "99+" : count}</Text>
-  </View>
-);
-
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
+  row: {
+    flexDirection: "row", alignItems: "center",
+    gap: 8, paddingHorizontal: 16, paddingTop: 8,
   },
-  searchBox: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#f1f1f1",
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    gap: 8,
+  inputWrap: {
+    flex: 1, flexDirection: "row", alignItems: "center", gap: 8,
+    backgroundColor: "#f5f5f5", borderRadius: 10,
+    paddingHorizontal: 12, paddingVertical: 9,
+    borderWidth: 0.5, borderColor: "#ebebeb",
   },
-  placeholder: {
-    color: "#9CA3AF",
-    fontSize: 13,
-    fontWeight: "400",
-    
-  },
-  actions: {
-    flexDirection: "row",
-    gap: 8,
-  },
+  input: { flex: 1, fontSize: 13, color: "#111" },
   iconBtn: {
-    width: 38,
-    height: 38,
-    borderRadius: 10,
-    backgroundColor: "rgba(255,255,255,0.2)",
-    alignItems: "center",
-    justifyContent: "center",
+    width: 38, height: 38, borderRadius: 10,
+    backgroundColor: "#f5f5f5", borderWidth: 0.5, borderColor: "#ebebeb",
+    alignItems: "center", justifyContent: "center", position: "relative",
   },
   badge: {
-    position: "absolute",
-    top: -4,
-    right: -4,
-    minWidth: 17,
-    height: 17,
-    borderRadius: 9,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 3,
-    borderWidth: 1.5,
-    borderColor: "#fff",
+    position: "absolute", top: -4, right: -4,
+    width: 16, height: 16, borderRadius: 8,
+    backgroundColor: "#16A34A", alignItems: "center", justifyContent: "center",
   },
-  badgeText: {
-    color: "#fff",
-    fontSize: 9,
-    fontWeight: "700",
-  },
+  badgeText: { fontSize: 9, fontWeight: "700", color: "#fff" },
 });

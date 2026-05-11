@@ -7,6 +7,7 @@ import {
   StyleSheet,
 
   StatusBar,
+  FlatList,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -133,25 +134,26 @@ export default function HomeScreen() {
         <View style={styles.section}>
           <SectionHeader
             title="Meuilleurs produits pour vous"
-            onSeeAll={() => console.log("See all products")}
+            onSeeAll={() => router.push('/(single)/ProductsList')}
           />
-          <View
-            // horizontal
-            // showsHorizontalScrollIndicator={false}
-            style={styles.productList}
-          >
-            {PRODUCTS.map((p) => (
+          <FlatList
+            horizontal
+            data={PRODUCTS}
+            keyExtractor={(item) => item.id.toString()}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.productList}
+            ItemSeparatorComponent={() => <View style={{ width: 12 }} />}
+            renderItem={({ item }) => (
               <ProductCard
-                key={p.id}
-                product={p}
+                product={item}
                 onPress={() => router.push('/(single)/product')}
-                onFavorite={() => console.log("Favorite:", p.id)}
-                onCompare={() => console.log("Compare:", p.id)}
+                onFavorite={() => console.log("Favorite:", item.id)}
+                onCompare={() => console.log("Compare:", item.id)}
               />
-            ))}
-          </View>
+            )}
+          />
         </View>
-      </ScrollView>
+      </ScrollView>      
     </SafeAreaView>
   );
 }
@@ -190,8 +192,6 @@ const styles = StyleSheet.create({
   },
   productList: {
     paddingHorizontal: 16,
-    flexDirection: "row",
-    justifyContent:"center",
     alignContent:"center",
     gap: 12,
   },

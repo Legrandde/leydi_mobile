@@ -18,25 +18,25 @@ const { width, height } = Dimensions.get('window');
 const slides = [
   {
     id: '1',
-    title: 'Level Up Your Style',
+    title: 'Publiez vos produits en quelques minutes',
     description:
-      'Shop smarter, dress bolder, and embrace your individuality to inspire and empower every fashion-forward individual.',
+      'Vendez vos récoltes directement depuis votre téléphone et trouvez facilement des produits agricoles frais partout en Afrique.',
     image: require('@/assets/images/onboarding1.jpg'),
     bg: '#f2c4c4',
   },
   {
     id: '2',
-    title: 'Build Your Wishlist',
+    title: 'Publiez vos produits en quelques minutes',
     description:
-      'Start building your dream wardrobe! Save your favorite items to your wishlist so you can easily access them later.',
+      'Ajoutez des photos, indiquez le prix, la quantité et commencez à recevoir des commandes rapidement.',
     image: require('@/assets/images/onboarding2.jpg'),
     bg: '#b2e0e0',
   },
   {
     id: '3',
-    title: 'Welcome to JULISHOP',
+    title: 'Achetez des produits frais en toute confiance',
     description:
-      'Ready to shop? Browse with easy filtering options and intuitive navigation.',
+      'Découvrez des producteurs fiables, comparez les prix et commandez vos produits agricoles facilement.',
     image: require('@/assets/images/onboarding3.jpg'),
     bg: '#f5f0e8',
   },
