@@ -128,11 +128,11 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2D7D6F',
+    backgroundColor: '#4B5943',
   },
   header: {
     height: height * 0.18,
-    backgroundColor: '#2D7D6F',
+    backgroundColor: '#4B5943',
     overflow: 'hidden',
   },
   leafBig: {
@@ -172,18 +172,18 @@ const styles = StyleSheet.create({
   },
   backArrow: {
     fontSize: 16,
-    color: '#2D7D6F',
+    color: '#4B5943',
     fontWeight: '600',
   },
   backText: {
     fontSize: 13,
-    color: '#2D7D6F',
+    color: '#4B5943',
     fontWeight: '500',
   },
   cardTitle: {
     fontSize: 28,
     fontWeight: '800',
-    color: '#2D7D6F',
+    color: '#4B5943',
     marginBottom: 24,
   },
   inputWrapper: {
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   btn: {
-    backgroundColor: '#2D7D6F',
+    backgroundColor: '#4B5943',
     borderRadius: 14,
     height: 52,
     alignItems: 'center',

@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    ...(Platform.OS === "android"? {marginBottom: 40}: null)
+    ...(Platform.OS === "android"? {marginBottom: 10}: null)
   },
   tabLabel: {
     fontSize: 11,

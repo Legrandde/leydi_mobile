@@ -6,6 +6,7 @@ import {
   View,
   Text,
   StyleSheet,
+  Image,
 } from "react-native";
 
 
@@ -20,7 +21,7 @@ const CategoryItem: React.FC<{ item: Category; onPress?: () => void }> = ({
 }) => (
   <TouchableOpacity style={styles.item} onPress={onPress} activeOpacity={0.75}>
     <View style={[styles.iconWrapper, { backgroundColor: item.color }]}>
-      <Text style={styles.icon}>{item.icon}</Text>
+      <Image source={item.icon} style={[styles.icon,{borderRadius: 50}]} />
     </View>
     <Text style={styles.label}>{item.label}</Text>
   </TouchableOpacity>
@@ -55,6 +56,10 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     gap: 6,
   },
+  icon:{
+    width:70,
+    height:70,
+  },
   iconWrapper: {
     width: 70,
     height: 70,
@@ -62,9 +67,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  icon: {
-    fontSize: 26,
-  },
+
   label: {
     fontSize: 12,
     color: "#374151",

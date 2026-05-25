@@ -10,10 +10,10 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Image,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 
 const { width, height } = Dimensions.get('window');
@@ -40,10 +40,6 @@ export default function LoginScreen() {
           {/* Header vert */}
           <View style={styles.header}>
             {/* Décoration feuille */}
-            <View style={styles.leafBig} />
-            <View style={styles.leafSmall} />
-            <View style={styles.pot} />
-
             <Text style={styles.hello}>Bonjour!</Text>
             <Text style={styles.subtitle}>Bienvenu sur leydi </Text>
           </View>
@@ -103,12 +99,12 @@ export default function LoginScreen() {
             <View style={styles.socialRow}>
               <TouchableOpacity style={styles.socialBtn}>
                 <Text style={styles.socialIcon}>
-                    <FontAwesome name="facebook-f" size={24} color="blue" />
+                    <Image style={{width:24, height:24}} source={require('@/assets/icons/facebook.png')} />
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.socialBtn}>
                 <Text style={[styles.socialIcon, { color: '#EA4335' }]}>
-                    <AntDesign name="google" size={24} color="skyblue" />
+                     <Image style={{width:24, height:24}} source={require('@/assets/icons/google.png')} />
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.socialBtn}>
@@ -136,11 +132,11 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3D9E8C',
+    backgroundColor: '#4B5943',
   },
   header: {
     height: height * 0.32,
-    backgroundColor: '#2D7D6F',
+    backgroundColor: '#4B5943',
     justifyContent: 'flex-end',
     paddingBottom: 40,
     paddingLeft: 30,
@@ -202,7 +198,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 22,
     fontWeight: '700',
-    color: '#2D7D6F',
+    color: '#4B5943',
     marginBottom: 20,
     textAlign: 'center',
   },
@@ -238,12 +234,12 @@ const styles = StyleSheet.create({
   },
   forgot: {
     fontSize: 13,
-    color: '#2D7D6F',
+    color: '#4B5943',
     fontWeight: '500',
   },
 
   btn: {
-    backgroundColor: '#2D7D6F',
+    backgroundColor: '#4B5943',
     borderRadius: 14,
     height: 52,
     alignItems: 'center',
@@ -307,6 +303,6 @@ const styles = StyleSheet.create({
   signupLink: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#2D7D6F',
+    color: '#4B5943',
   },
 });

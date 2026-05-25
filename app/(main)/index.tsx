@@ -24,10 +24,10 @@ import { useRouter } from "expo-router";
 
 // ─── Mock data ────────────────────────────────────────────────
 const CATEGORIES: Category[] = [
-  { id: "dairy",   label: "Dairy",   icon: "🥛", color: "#DBEAFE" },
-  { id: "meat",    label: "Meat",    icon: "🥩", color: "#FEE2E2" },
-  { id: "pantry",  label: "Pantry",  icon: "📦", color: "#FEF3C7" },
-  { id: "see_all", label: "Voir tous", icon: "🟩", color: "#D1FAE5" },
+  { id: "dairy",   label: "Fruits",   icon: require('@/assets/icons/fruits.png'), color: "#B67332" },
+  { id: "meat",    label: "Legumes",    icon: require('@/assets/icons/legumes.png'), color: "#A4BD01" },
+  { id: "condi",    label: "Condiments",    icon: require('@/assets/icons/condiments.jpg'), color: "#A4BD01" },
+  { id: "root",    label: "Racines",    icon: require('@/assets/icons/racine.jpg'), color: "#A4BD01" },
 ];
 
 const BANNERS: Banner[] = [
@@ -58,7 +58,7 @@ const PRODUCTS: Product[] = [
     discount: 25,
     rating: 4.8,
     reviewCount: 645,
-    imageUri: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400",
+    imageUri: "https://i.pinimg.com/1200x/02/9d/89/029d89a543761c9cb1826b0015654ee2.jpg",
   },
   {
     id: "p2",
@@ -67,8 +67,8 @@ const PRODUCTS: Product[] = [
     originalPrice: 2.0,
     discount: 25,
     rating: 4.8,
-    reviewCount: 645,
-    imageUri: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400",
+    reviewCount: 645, 
+    imageUri: "https://i.pinimg.com/736x/e3/cd/47/e3cd4768842b98d478e5d4b755ec7daf.jpg",
   },
   {
     id: "p3",
@@ -88,7 +88,7 @@ const PRODUCTS: Product[] = [
     discount: 34,
     rating: 4.6,
     reviewCount: 312,
-    imageUri: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=400",
+    imageUri: "https://i.pinimg.com/736x/64/85/78/6485782a2277787f6c567391d4e1c92e.jpg",
   },
 ];
 
@@ -97,16 +97,15 @@ export default function HomeScreen() {
   const router = useRouter()
   return (
     <SafeAreaView style={styles.safe}>
-      <StatusBar backgroundColor="#16A34A" barStyle="light-content" />
+      <StatusBar backgroundColor="#4B5943" barStyle="light-content" />
 
       {/* Header vert */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.locationRow}>
           <Ionicons name="location-sharp" size={14} color="#a2a4a2" />
-          <Text onPress={()=> router.push('/(main)/profile')} style={styles.locationText}>Add your location first</Text>
+        <Text onPress={()=> router.push('/(main)/profile')} style={styles.locationText}>Ajouter votre localisation</Text>
           <Ionicons name="chevron-forward" size={14} color="#a2a4a2" />
         </TouchableOpacity>
-
         <SearchBar cartCount={12} notifCount={1} />
       </View>
 

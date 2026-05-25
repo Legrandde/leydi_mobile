@@ -11,7 +11,7 @@ export type CartItem = {
   unit?: string;              // linkAgri
   qty: number;
 
-  // linkAgri
+  // linkAgri   
   emoji?: string;
   emojiColor?: string;
   cultivateur?: string;

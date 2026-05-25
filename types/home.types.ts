@@ -1,7 +1,7 @@
 export interface Category {
   id: string;
   label: string;
-  icon: string; // emoji ou nom d'icône
+  icon: undefined;
   color: string;
 }
 

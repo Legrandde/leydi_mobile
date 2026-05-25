@@ -250,13 +250,13 @@ const styles = StyleSheet.create({
   dot: {
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#E8365C',
+    backgroundColor: '#4B5943',
   },
   nextBtn: {
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#E8365C',
+    backgroundColor: '#4B5943',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
     marginTop: -2,
   },
   startBtn: {
-    backgroundColor: '#E8365C',
+    backgroundColor: '#4B5943',
     borderRadius: 14,
     paddingVertical: 16,
     alignItems: 'center',

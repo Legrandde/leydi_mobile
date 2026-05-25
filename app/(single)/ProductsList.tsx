@@ -1,7 +1,7 @@
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import {
-  FlatList, ScrollView, StyleSheet,
+  FlatList, Image, ScrollView, StyleSheet,
   Text, TouchableOpacity, View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -15,12 +15,12 @@ type Category = "all" | "legume" | "fruit" | "condiment" | "racine";
 type Product = Omit<CartItem, "qty"> & { cat: Category; bio: boolean; note: number; avis: number };
 
 const PRODUCTS: Product[] = [
-  { id: 1, name: "Tomate Roma",     cat: "legume",    emoji: "🍅", emojiColor: "#fff3e0", cultivateur: "Mamadou Diallo",   localite: "Thiès",       price: 750,  unit: "kg",    bio: true,  note: 4.7, avis: 124 },
-  { id: 2, name: "Mangue Kent",     cat: "fruit",     emoji: "🥭", emojiColor: "#fff8e1", cultivateur: "Fatoumata Sow",    localite: "Ziguinchor",  price: 1200, unit: "kg",    bio: false, note: 4.9, avis: 87  },
-  { id: 3, name: "Oignon violet",   cat: "condiment", emoji: "🧅", emojiColor: "#fce4ec", cultivateur: "Ibrahima Ndiaye",  localite: "Saint-Louis", price: 500,  unit: "kg",    bio: false, note: 4.3, avis: 56  },
-  { id: 4, name: "Gombo frais",     cat: "legume",    emoji: "🫛", emojiColor: "#e8f5e9", cultivateur: "Aïssatou Balde",   localite: "Kolda",       price: 600,  unit: "botte", bio: true,  note: 4.6, avis: 32  },
-  { id: 5, name: "Carotte Nantes",  cat: "racine",    emoji: "🥕", emojiColor: "#fff3e0", cultivateur: "Ousmane Faye",     localite: "Dakar",       price: 450,  unit: "kg",    bio: false, note: 4.2, avis: 41  },
-  { id: 6, name: "Piment doux",     cat: "condiment", emoji: "🫑", emojiColor: "#ffebee", cultivateur: "Rokhaya Gaye",     localite: "Kaolack",     price: 800,  unit: "kg",    bio: true,  note: 4.5, avis: 19  },
+  { id: 1, name: "Tomate Roma",     cat: "legume",    emoji: "https://i.pinimg.com/736x/05/4f/19/054f190455f5f7981b9b00a5652d09bc.jpg" , emojiColor: "#fff3e0", cultivateur: "Mamadou Diallo",   localite: "Thiès",       price: 750,  unit: "kg",    bio: true,  note: 4.7, avis: 124 },
+  { id: 2, name: "Mangue Kent",     cat: "fruit",     emoji: "https://i.pinimg.com/736x/d7/7b/07/d77b0787a868f43175c3a7388f4663d2.jpg", emojiColor: "#fff8e1", cultivateur: "Fatoumata Sow",    localite: "Ziguinchor",  price: 1200, unit: "kg",    bio: false, note: 4.9, avis: 87  },
+  { id: 3, name: "Oignon violet",   cat: "condiment", emoji: "https://i.pinimg.com/736x/a0/ca/5c/a0ca5ce90067d0321580fbc3d507f0ec.jpg", emojiColor: "#fce4ec", cultivateur: "Ibrahima Ndiaye",  localite: "Saint-Louis", price: 500,  unit: "kg",    bio: false, note: 4.3, avis: 56  },
+  { id: 4, name: "Gombo frais",     cat: "legume",    emoji: "https://i.pinimg.com/736x/a5/29/84/a52984f3b16dc48adc55e93e6befa1a2.jpg", emojiColor: "#e8f5e9", cultivateur: "Aïssatou Balde",   localite: "Kolda",       price: 600,  unit: "botte", bio: true,  note: 4.6, avis: 32  },
+  { id: 5, name: "Carotte Nantes",  cat: "racine",    emoji: "https://i.pinimg.com/1200x/17/83/e5/1783e56e146181775a3d0ffa04942427.jpg", emojiColor: "#fff3e0", cultivateur: "Ousmane Faye",     localite: "Dakar",       price: 450,  unit: "kg",    bio: false, note: 4.2, avis: 41  },
+  { id: 6, name: "Piment doux",     cat: "condiment", emoji: "https://i.pinimg.com/736x/ba/e3/65/bae365a8aad8b2017ae93993c897753d.jpg", emojiColor: "#ffebee", cultivateur: "Rokhaya Gaye",     localite: "Kaolack",     price: 800,  unit: "kg",    bio: true,  note: 4.5, avis: 19  },
 ];
 
 const CATEGORIES: { key: Category; label: string }[] = [
@@ -58,7 +58,7 @@ function ProductCard({ item }: { item: Product }) {
     <View style={styles.card}>
       <View style={styles.cardTop}>
         <View style={[styles.imgBox, { backgroundColor: item.emojiColor }]}>
-          <Text style={{ fontSize: 28 }}>{item.emoji}</Text>
+          <Image style={{width: 80, height:80}} source={{uri: item.emoji}}  />
         </View>
         <View style={styles.cardInfo}>
           <View style={styles.nameRow}>

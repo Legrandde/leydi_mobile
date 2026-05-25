@@ -1,6 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
 import {
+  Image,
   ScrollView, StyleSheet, Text,
   TouchableOpacity, View,
 } from "react-native";
@@ -14,10 +15,9 @@ const PAY_METHODS: {
   key: PayMethod; label: string; sub: string;
   logoLabel: string; logoBg: string; logoColor: string;
 }[] = [
-  { key: "wave",   label: "Wave",                    sub: "Paiement mobile instantané", logoLabel: "W",  logoBg: "#1a56db", logoColor: "#fff"    },
-  { key: "orange", label: "Orange Money",             sub: "Paiement mobile Orange",     logoLabel: "OM", logoBg: "#ff6900", logoColor: "#fff"    },
-  { key: "cash",   label: "Paiement à la livraison", sub: "Espèces à la réception",     logoLabel: "CL", logoBg: "#e8f5e9", logoColor: "#2e7d32" },
-  { key: "card",   label: "Carte bancaire",           sub: "Visa · Mastercard",          logoLabel: "CB", logoBg: "#f0f0f0", logoColor: "#555"    },
+  { key: "wave",   label: "Wave",                    sub: "Paiement mobile instantané", logoLabel: "https://i.pinimg.com/736x/36/af/0d/36af0df12dae18c18ae511e1bcf2ade6.jpg",  logoBg: "#1a56db", logoColor: "#fff"    },
+  { key: "orange", label: "Orange Money",             sub: "Paiement mobile Orange",     logoLabel: "https://i.pinimg.com/736x/d4/0a/ae/d40aaed93de5fb669b845167963c6d9f.jpg", logoBg: "#ff6900", logoColor: "#fff"    },
+  { key: "cash",   label: "Paiement à la livraison", sub: "Espèces à la réception",     logoLabel: "https://i.pinimg.com/736x/f9/f7/2a/f9f72a859cc3b5c99335752592e586c9.jpg", logoBg: "#e8f5e9", logoColor: "#2e7d32" },
 ];
 
 const GREEN = "#2e7d32";
@@ -176,7 +176,7 @@ export default function OrderConfirmScreen() {
               style={[styles.itemRow, idx === items.length - 1 && { borderBottomWidth: 0 }]}
             >
               <View style={[styles.itemEmoji, { backgroundColor: item.emojiColor }]}>
-                <Text style={{ fontSize: 18 }}>{item.emoji}</Text>
+                <Image source={{uri: item.emoji }} style={{ width: 30, height:30 }} />
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={styles.itemName}>{item.name}</Text>
@@ -237,8 +237,8 @@ export default function OrderConfirmScreen() {
                 onPress={() => setPayMethod(m.key)}
                 activeOpacity={0.7}
               >
-                <View style={[styles.payLogo, { backgroundColor: m.logoBg }]}>
-                  <Text style={[styles.payLogoText, { color: m.logoColor }]}>{m.logoLabel}</Text>
+                <View style={[styles.payLogo]}>
+                  <Image source={{uri: m.logoLabel}} style={{width:42, height:40, borderRadius: 20}} />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.payName}>{m.label}</Text>
