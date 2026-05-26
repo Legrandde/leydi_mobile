@@ -48,9 +48,9 @@ export function ProductCard({ product, onPress, onFavorite, onCompare }: Props) 
         {/* Prix + contrôle panier */}
         <View style={styles.bottom}>
           <View>
-            <Text style={styles.price}>${product.price.toFixed(2)}</Text>
+            <Text style={styles.price}>{product.price.toFixed(2)} F</Text>
             {product.originalPrice && (
-              <Text style={styles.originalPrice}>${product.originalPrice.toFixed(2)}</Text>
+              <Text style={styles.originalPrice}>{product.originalPrice.toFixed(2)} F</Text>
             )}
           </View>
 

@@ -33,17 +33,17 @@ const CATEGORIES: Category[] = [
 const BANNERS: Banner[] = [
   {
     id: "b1",
-    title: "Fresh Deals,\nFresh Groceries!",
-    subtitle: "Up to 50% off on your favorite essentials. Shop now and save big!",
-    cta: "GRAB THE DEALS",
+    title: "De bonnes promos et des produits frais !",
+    subtitle: "Jusqu’à 50 % de réduction sur vos produits essentiels préférés. Achetez maintenant et économisez beaucoup",
+    cta: "PROFITE DES OFFRES",
     bgColor: "#15803D",
     imageUri: require("../../assets/images/banner01.jpg")
   },
   {
     id: "b2",
-    title: "Sweet Summer\nSavings!",
-    subtitle: "Enjoy discounts on seasonal fruits. Healthy choices at great prices.",
-    cta: "EXPLORE NOW",
+    title: "De belles économies d’été !",
+    subtitle: "Profitez de réductions sur les fruits de saison. Des choix sains à de très bons prix.",
+    cta: "EXPLORE MAINTENANT",
     bgColor: "#7C2D12",
     imageUri: require("../../assets/images/banner1.jpg")
   },
@@ -52,9 +52,9 @@ const BANNERS: Banner[] = [
 const PRODUCTS: Product[] = [
   {
     id: "p1",
-    name: "Choco Bliss Cake",
-    price: 1.0,
-    originalPrice: 2.0,
+    name: "Pomme de terre",
+    price: 1500,
+    originalPrice: 2000,
     discount: 25,
     rating: 4.8,
     reviewCount: 645,
@@ -62,9 +62,9 @@ const PRODUCTS: Product[] = [
   },
   {
     id: "p2",
-    name: "Fresh Garden Salad",
-    price: 1.0,
-    originalPrice: 2.0,
+    name: "Carrotte frais",
+    price: 1890,
+    originalPrice: 2500,
     discount: 25,
     rating: 4.8,
     reviewCount: 645, 
@@ -72,9 +72,9 @@ const PRODUCTS: Product[] = [
   },
   {
     id: "p3",
-    name: "Organic Avocado",
-    price: 0.99,
-    originalPrice: 1.5,
+    name: "Organic Avoca",
+    price: 990,
+    originalPrice: 1500,
     discount: 34,
     rating: 4.6,
     reviewCount: 312,
@@ -82,9 +82,9 @@ const PRODUCTS: Product[] = [
   },
   {
     id: "p4",
-    name: "Organic Avocado",
-    price: 0.99,
-    originalPrice: 1.5,
+    name: "Mail",
+    price: 990,
+    originalPrice: 1550,
     discount: 34,
     rating: 4.6,
     reviewCount: 312,

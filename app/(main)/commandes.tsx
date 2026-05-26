@@ -1,11 +1,12 @@
 import { Feather, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useState, useMemo } from "react";
 import {
-  FlatList, ScrollView, StyleSheet, Text,
+  FlatList, ImageProps, ScrollView, StyleSheet, Text,
   TouchableOpacity, View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import { Image } from "react-native";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -20,7 +21,7 @@ type Order = {
   id: string;
   date: string;
   status: OrderStatus;
-  items: OrderItemThumb[];
+  items: OrderItemThumb[] ;
   count: number;
   total: number;
   payMethod: string;
@@ -36,52 +37,30 @@ const ORDERS: Order[] = [
   {
     id: "LK-2024", date: "Aujourd'hui · 12h30", status: "transit",
     items: [
-      { emoji: "🍅", color: "#fff3e0" },
-      { emoji: "🫛", color: "#e8f5e9" },
-      { emoji: "🫑", color: "#ffebee" },
+      { emoji: "https://i.pinimg.com/736x/05/4f/19/054f190455f5f7981b9b00a5652d09bc.jpg", color: "#fff3e0" },
+      { emoji: "https://i.pinimg.com/736x/d7/7b/07/d77b0787a868f43175c3a7388f4663d2.jpg", color: "#e8f5e9" },
+      { emoji: "https://i.pinimg.com/736x/ba/e3/65/bae365a8aad8b2017ae93993c897753d.jpg", color: "#ffebee" },
     ],
     count: 3, total: 3150, payMethod: "Wave", payIcon: "bolt",
   },
   {
     id: "LK-2021", date: "9 mai 2025 · 10h05", status: "delivered",
     items: [
-      { emoji: "🥭", color: "#fff8e1" },
-      { emoji: "🥕", color: "#fff3e0" },
+      { emoji: "https://i.pinimg.com/736x/d7/7b/07/d77b0787a868f43175c3a7388f4663d2.jpg", color: "#fff8e1" },
+      { emoji: "https://i.pinimg.com/1200x/17/83/e5/1783e56e146181775a3d0ffa04942427.jpg", color: "#fff3e0" },
     ],
     count: 2, total: 2100, payMethod: "Orange Money", payIcon: "phone-portrait",
   },
   {
     id: "LK-2019", date: "6 mai 2025 · 09h22", status: "delivered",
     items: [
-      { emoji: "🧅", color: "#fce4ec" },
-      { emoji: "🍅", color: "#fff3e0" },
-      { emoji: "🥕", color: "#fff3e0" },
-      { emoji: "🫛", color: "#e8f5e9" },
+      { emoji: "https://i.pinimg.com/736x/a5/29/84/a52984f3b16dc48adc55e93e6befa1a2.jpg", color: "#fce4ec" },
+      { emoji: "https://i.pinimg.com/736x/a0/ca/5c/a0ca5ce90067d0321580fbc3d507f0ec.jpg", color: "#fff3e0" },
+      { emoji: "https://i.pinimg.com/1200x/17/83/e5/1783e56e146181775a3d0ffa04942427.jpg", color: "#fff3e0" },
     ],
     count: 5, total: 4250, payMethod: "À la livraison", payIcon: "cash",
   },
-  {
-    id: "LK-2015", date: "2 mai 2025 · 16h48", status: "pending",
-    items: [
-      { emoji: "🥭", color: "#fff8e1" },
-      { emoji: "🫑", color: "#ffebee" },
-    ],
-    count: 2, total: 2800, payMethod: "Wave", payIcon: "bolt",
-  },
-  {
-    id: "LK-2010", date: "28 avr. 2025 · 11h30", status: "delivered",
-    items: [
-      { emoji: "🍅", color: "#fff3e0" },
-      { emoji: "🥕", color: "#fff3e0" },
-      { emoji: "🧅", color: "#fce4ec" },
-    ],
-    count: 3, total: 3200, payMethod: "Carte bancaire", payIcon: "card",
-  },
-  {
-    id: "LK-2005", date: "22 avr. 2025 · 08h15", status: "cancelled",
-    items: [{ emoji: "🥭", color: "#fff8e1" }],
-    count: 1, total: 2350, payMethod: "Orange Money", payIcon: "phone-portrait",
-  },
+  
 ];
 
 const TABS: { key: TabFilter; label: string }[] = [
@@ -110,10 +89,9 @@ const GREEN = "#16A34A";
 function PayIcon({ name }: { name: Order["payIcon"] }) {
   const props = { size: 13, color: "#aaa" };
   switch (name) {
-    case "bolt":          return <Ionicons name="flash-outline"        {...props} />;
-    case "phone-portrait":return <Ionicons name="phone-portrait-outline" {...props} />;
-    case "cash":          return <Ionicons name="cash-outline"         {...props} />;
-    case "card":          return <Ionicons name="card-outline"         {...props} />;
+    case "bolt":          return <Image source={{uri: 'https://i.pinimg.com/736x/36/af/0d/36af0df12dae18c18ae511e1bcf2ade6.jpg'}} style={{width:20, height:20, borderRadius:50}} />;
+    case "phone-portrait":return <Image source={{uri: 'https://i.pinimg.com/736x/d4/0a/ae/d40aaed93de5fb669b845167963c6d9f.jpg'}} style={{width:20, height:20, borderRadius:50}} />;
+    case "cash":          return <Image source={{uri: 'https://i.pinimg.com/736x/f9/f7/2a/f9f72a859cc3b5c99335752592e586c9.jpg'}} style={{width:20, height:20, borderRadius:50}} />;
   }
 }
 
@@ -197,7 +175,7 @@ function OrderCard({ order }: { order: Order }) {
               key={idx}
               style={[styles.thumb, { backgroundColor: item.color }]}
             >
-              <Text style={{ fontSize: 17 }}>{item.emoji}</Text>
+              <Image source={{uri: item.emoji}} style={{ width: 40, height:40 }} />
             </View>
           ))}
           {extra > 0 && (
